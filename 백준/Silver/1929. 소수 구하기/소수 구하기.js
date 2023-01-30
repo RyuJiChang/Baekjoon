@@ -1,9 +1,9 @@
 const [startNum, endNum] = require('fs').readFileSync('/dev/stdin').toString().trim().split(' ').map(Number)
 
-let primeArr = []
+let primeArr = [0,0]
 
-for(let i = 0 ; i <= endNum ; i++){
-    if(i < startNum || i === 0 || i === 1){
+for(let i = 2 ; i <= endNum ; i++){
+    if(i < startNum){
         primeArr.push(0)
     }
     else{

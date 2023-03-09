@@ -1,9 +1,5 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().split(" ").map(Number)[0]
-let result = '*'
-for(let i = 0 ; i < input ; i++){
-    result += '*'
-}
-for(let i = 0 ; i < input ; i++){
-    result = result.slice(1)
-    console.log(result)
+const input = Number(require('fs').readFileSync('/dev/stdin').toString().trim())
+
+for(let i = input ; i > 0 ; i--){
+    console.log('*'.repeat(i))
 }

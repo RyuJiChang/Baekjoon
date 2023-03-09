@@ -1,10 +1,10 @@
-# [Bronze III] Triangles - 7595 
+# [Bronze IV] Triangles - 7595 
 
 [문제 링크](https://www.acmicpc.net/problem/7595) 
 
 ### 성능 요약
 
-메모리: 12884 KB, 시간: 136 ms
+메모리: 12844 KB, 시간: 136 ms
 
 ### 분류
 

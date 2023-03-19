@@ -5,11 +5,14 @@ const result = []
 const bfs = (start, goal) => {
     const visited = new Array(10000).fill(1)
     visited[start] = 0
-    let stack = [[start, '']]
-    while(stack.length){
-        const newStack = []
-        while(stack.length){
-            const [number, str] = stack.pop()
+    let stackNum = [start]
+    let stackStr = ['']
+    while(stackNum.length){
+        const newStackNum = []
+        const newStackStr = []
+        while(stackNum.length){
+            const number = stackNum.pop()
+            const str = stackStr.pop()
             const D = (number*2)%10000
             const S = (10000+number-1)%10000
             const L = (number*10)%10000 + Math.floor(number/1000)
@@ -19,7 +22,8 @@ const bfs = (start, goal) => {
             }
             else if(visited[D]){
                 visited[D] = 0
-                newStack.push([D, str+'D'])
+                newStackNum.push(D)
+                newStackStr.push(str+'D')
             }
             
             if(S === goal){
@@ -27,7 +31,8 @@ const bfs = (start, goal) => {
             }
             else if(visited[S]){
                 visited[S] = 0
-                newStack.push([S, str+'S'])
+                newStackNum.push(S)
+                newStackStr.push(str+'S')
             }
             
             if(L === goal){
@@ -35,7 +40,8 @@ const bfs = (start, goal) => {
             }
             else if(visited[L]){
                 visited[L] = 0
-                newStack.push([L, str+'L'])
+                newStackNum.push(L)
+                newStackStr.push(str+'L')
             }
             
             if(R === goal){
@@ -43,10 +49,12 @@ const bfs = (start, goal) => {
             }
             else if(visited[R]){
                 visited[R] = 0
-                newStack.push([R, str+'R'])
+                newStackNum.push(R)
+                newStackStr.push(str+'R')
             }
         }
-        stack = newStack
+        stackNum = newStackNum
+        stackStr = newStackStr
     }
 }
 

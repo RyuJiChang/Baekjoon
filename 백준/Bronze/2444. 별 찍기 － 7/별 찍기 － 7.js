@@ -1,6 +1,6 @@
-let input = Number(require('fs').readFileSync('/dev/stdin').toString().trim())
+const input = Number(require('fs').readFileSync('/dev/stdin').toString().trim())
 
-let result = []
+const result = []
 for(let i = 1 ; i <= input ; i++){
     result.push(`${' '.repeat(input-i)}${'**'.repeat(i-1)}*`)
 }

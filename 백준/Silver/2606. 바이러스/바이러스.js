@@ -1,37 +1,30 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n')
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map(el => el.split(' ').map(Number))
+const map = []
+const check = new Array(input[0][0] +1).fill(1)
+let count = -1
 
-const routeCheck = new Array(101).fill(1)
-let virusCount = -1
-const nodeList = {}
-const nodeStack = [1]
-
-for(let i = 2 ; i < input.length ; i++){
-    const [a, b] = input[i].split(' ')
-    if(nodeList[a]){
-        nodeList[a].push(b)
-    }
-    else{
-        nodeList[a] = [b]
-    }
-    if(nodeList[b]){
-        nodeList[b].push(a)
-    }
-    else{
-        nodeList[b] = [a]
-    }
+for(let i = 0 ; i <= input[0][0] ; i++){
+    map.push(new Array())
 }
 
-while(nodeStack.length){
-    const nodeNow = nodeStack.pop()
-    if(routeCheck[nodeNow]){
-        routeCheck[nodeNow] = 0
-        virusCount++
-    }
-    for(let i = 0 ; i < nodeList[nodeNow].length ; i++){
-        if(routeCheck[nodeList[nodeNow][i]]){
-            nodeStack.push(nodeList[nodeNow][i])
+for(let i = 2 ; i < input.length ; i++){
+    const [a, b] = input[i]
+    map[a].push(b)
+    map[b].push(a)
+}
+
+const stack = [1]
+check[1] = 0
+
+while(stack.length){
+    const now = stack.pop()
+    count++
+    for(let i = 0 ; i < map[now].length ; i++){
+        let node = map[now][i]
+        if(check[node]){
+            stack.push(node)
+            check[node] = 0
         }
     }
 }
-
-console.log(virusCount)
+console.log(count)

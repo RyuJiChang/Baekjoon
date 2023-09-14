@@ -1,0 +1,6 @@
+-- 코드를 입력하세요
+SELECT COUNT(user_id) AS USERS
+FROM user_info
+WHERE AGE >= 20 
+AND AGE <= 29
+AND JOINED LIKE '2021%'

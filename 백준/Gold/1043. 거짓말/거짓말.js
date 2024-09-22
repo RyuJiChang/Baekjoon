@@ -35,16 +35,7 @@ for(let i = 2 ; i < input.length ; i++){
 }
 
 for(let i = 2 ; i < input.length ; i++){
-    let check = true
-    
-    for(let j = 1 ; j < input[i].length ; j++){
-        if(know.length > 0 && find(input[i][j]) == find(know[0])){
-            check = false
-            break
-        }
-    }
-    
-    if(check){
+    if(know.length == 0 || find(input[i][1]) != find(know[0])){
         count++
     }
 }

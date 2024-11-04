@@ -1,14 +1,23 @@
 const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n')
-const map = {}
+const plusList = []
+const minusList = []
 const result = []
-const have = input[1].split(' ')
-const check = input[3].split(' ')
+const have = input[1].split(' ').map(Number)
+const check = input[3].split(' ').map(Number)
 
 for(let i = 0 ; i < have.length ; i++){
-    map[have[i]] = true
+    if(have[i] < 0){
+        minusList[-have[i]] = true
+    }
+    else{
+        plusList[have[i]] = true
+    }
 }
 for(let i = 0 ; i < check.length ; i++){
-    if(map[check[i]]){
+    if(check[i] < 0 && minusList[-check[i]]){
+        result.push(1)
+    }
+    else if(check[i] >= 0 && plusList[check[i]]){
         result.push(1)
     }
     else{

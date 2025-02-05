@@ -1,0 +1,2 @@
+const input = require('fs').readFileSync('/dev/stdin').toString().trim()
+console.log(input.includes('M') && input.includes('O') && input.includes('B')&& input.includes('I') && input.includes('S') ? 'YES' : 'NO')

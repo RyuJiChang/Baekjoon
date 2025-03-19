@@ -1,0 +1,1 @@
+console.log('UOS'[(require('fs').readFileSync('/dev/stdin').toString().trim() - 1) % 3])

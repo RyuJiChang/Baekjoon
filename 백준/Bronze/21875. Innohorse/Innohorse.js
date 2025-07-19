@@ -1,0 +1,2 @@
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map(el => el.split(''))
+console.log([Math.abs(input[0][0].charCodeAt() - input[1][0].charCodeAt()), Math.abs(input[0][1] - input[1][1])].sort((a,b) => a-b).join(' '))
